@@ -28,7 +28,7 @@ sources:
       - name: region
         description: Region table holding repetitive data.
         columns:
-        - name: r_regionnkey
+        - name: r_regionkey
           description: This is the Region Key.
           tests:
             - not_null
