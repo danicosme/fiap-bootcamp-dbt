@@ -1,0 +1,47 @@
+version: 2
+
+models:
+    - name: stg_tpch_sf1__customer
+      columns:
+        - name: cust_key
+          description: "Afirma que uma coluna tem pelo menos um valor"
+          tests:
+            - dbt_utils.at_least_one
+
+        - name: cust_name
+          description: "Afirma que uma coluna não possui o mesmo valor em todas as linhas e que a coluna não possui strings vazias"
+          tests:
+            - dbt_utils.not_constant
+            - dbt_utils.not_empty_string
+        
+        - name: cust_phone
+          description: "Afirma que a proporção de valores não nulos presentes em uma coluna está entre um intervalo especificado [ at_least, at_most]"
+          tests:
+            - dbt_utils.not_null_proportion:
+                at_least: 0.95
+    
+    - name: stg_tpch_sf1__nation
+      columns:
+        - name: nation_key
+          description: "Afirma que uma coluna tem pelo menos um valor"
+          tests:
+            - dbt_utils.at_least_one
+
+        - name: nation_name
+          description: "Afirma que uma coluna não possui o mesmo valor em todas as linhas e que a coluna não possui strings vazias"
+          tests:
+            - dbt_utils.not_constant
+            - dbt_utils.not_empty_string
+    
+    - name: stg_tpch_sf1__region
+      columns:
+        - name: region_key
+          description: "Afirma que uma coluna tem pelo menos um valor"
+          tests:
+            - dbt_utils.at_least_one
+
+        - name: region_name
+          description: "Afirma que uma coluna não possui o mesmo valor em todas as linhas e que a coluna não possui strings vazias"
+          tests:
+            - dbt_utils.not_constant
+            - dbt_utils.not_empty_string

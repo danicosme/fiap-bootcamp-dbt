@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_customer
+    columns:
+      - name: cust_key
+        description: "Afirma que os valores em uma determinada coluna têm exatamente a mesma cardinalidade que os valores de uma coluna diferente em um modelo diferente"
+        tests:
+          - dbt_utils.cardinality_equality:
+              field: cust_key
+              to: ref('stg_tpch_sf1__customer')
